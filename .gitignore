@@ -1,0 +1,6 @@
+.terraform
+terragraft.tf
+terraform.tfstate
+terraform.tfstate.backup
+*.auto.tfvars
+terragraft--*.txt

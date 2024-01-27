@@ -1,0 +1,19 @@
+---
+
+backend:
+  encrypt: true
+  region: eu-west-2
+  profile: awsprofileforstate
+  dynamodb_table: tablenamehereifyouuseone
+  bucket: nameofs3bucketfortfstate
+  key: coniston-it/demo/stack/{{ stack }}/terraform.tfstate
+
+stacks:
+  - name: one
+    path: stack/one
+  - name: two
+    path: stack/two
+  - name: three
+    path: stack/three
+  - name: four
+    path: stack/four

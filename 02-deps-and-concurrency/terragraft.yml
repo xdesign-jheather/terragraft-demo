@@ -1,0 +1,19 @@
+---
+
+stacks:
+  - name: sleep10
+    path: stack/sleep10
+  - name: sleep25
+    path: stack/sleep25
+  - name: sleep15
+    path: stack/sleep15
+
+dependencies:
+  - stack: sleep10
+    needs: sleep15
+  - stack: sleep15
+    needs: sleep25
+  - stack: sleep25
+    needs:
+    - sleep10
+    - foo

@@ -1,0 +1,25 @@
+---
+
+stacks:
+  - name: hello
+    path: stack/hello
+
+attributes:
+  - environment
+  - aws_region
+
+targets:
+  dev:
+    aws_region: eu-west-1
+    environment: dev
+  test:
+    aws_region: eu-west-2
+    environment: test
+  prod:
+    aws_region: eu-west-1
+    environment: prod
+
+variables:
+  - vars/global.tfvars
+  - vars/region/{{ aws_region }}.tfvars
+  - vars/environment/{{ environment }}.tfvars

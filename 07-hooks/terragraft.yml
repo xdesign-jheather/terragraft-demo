@@ -1,0 +1,41 @@
+---
+
+stacks:
+  - name: hello
+    path: stack/hello
+  - name: world
+    path: stack/world
+
+attributes:
+  - environment
+  - aws_region
+
+targets:
+  dev:
+    aws_region: eu-west-1
+    environment: dev
+  test:
+    aws_region: eu-west-2
+    environment: test
+  prod:
+    aws_region: eu-west-1
+    environment: prod
+
+hooks:
+  - name: hook 1
+    stack: hello
+    before: true
+    after: true
+    action:
+      - plan
+      - apply
+    image: busybox:latest
+    run:
+      - env
+  - name: hook 2
+    before: true
+    run:
+      - bash
+      - -c
+      - echo my_ip = \"$(curl -s curlmyip.org)\"
+    output: my_ip.auto.tfvars
